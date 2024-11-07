@@ -56,7 +56,8 @@ export default router;
 ```
 
 - Menampilkan Data Product dari JSON (dapatkan semua file assets nya, buat data-seed.js dalam bentuk object, dan tampilkan datanya di ProductIndex.vue)
-    
+
+ ```   
 .
 ├── ...
 ├── src                          # source folder
@@ -66,7 +67,7 @@ export default router;
 │   ├── ...
 │   ├── data-seed.js             # file yang berisi data JSON atau object dari assets
 └── ...
-
+```
     > structure folder yang bisa di ikuti
 
 
