@@ -1,7 +1,8 @@
 <template>
   <div id="app">
 
-    <nav class="navbar is-fixed-top is-primary has-shadow" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top is-primary has-shadow title is-size-4" role="navigation"
+      aria-label="main navigation">
       <div class="navbar-brand">
         <div class="navbar-brand">
           <h1 class="navbar-item ">ONLINESHOP</h1>
