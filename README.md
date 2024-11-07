@@ -14,11 +14,54 @@ Dengan studi kasus shopping cart diharapkan teman-teman lebih mudah untuk memaha
 -
 -
 
+
 # Silabus
 
--
--
--
+- Persiapan Software yang dibutuhkan NodeJS - Visual Studio Code (Extension: Vetur, Volar Labs, Vue Official, ESLint) - MongoDB Community Server (NoSQL) 
+- Instalasi Vue CLI dan Project, untuk instalasinya silahkan kunjungi situs resmi dokumentasi VueJS https://vuejs.org/guide/quick-start.html
+- Membuat Halaman Yang Dibutuhkan Vuestore (membuat file vue dan konfigurasi routesnya di file app.js)
+    .
+    ├── ...
+    ├── src                    # source folder
+    │   ├── .....          
+    │   ├── routes             # Folder Routes (untuk mempermudah mengakses tiap halaman terdapat file app.js)
+    │   └── views              # Folder Halaman yang ditampilkan
+          ├── cart             # Untuk Halaman Cart (di dalamnya terdapat index.vue)
+          ├── product          # Halaman Produk Detail dan Index produk (ProductDetail.vue & ProductIndex.vue)
+
+## konfigurasi routes tiap halaman
+```javascript
+import { createWebHistory, createRouter } from "vue-router";
+import product from "../views/product/ProductIndex.vue";
+import productDetail from "../views/product/ProductDetail.vue";
+import cart from "../views/cart/Index.vue";
+
+const routes = [
+  { path: "/product", name: "Product", component: product },
+  { path: "/product/:id", name: "Detail", component: productDetail },
+  { path: "/cart", name: "Cart", component: cart },
+];
+
+const router = new createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+export default router;
+```
+
+- Menampilkan Data Product dari JSON (dapatkan semua file assets nya, buat data-seed.js dalam bentuk object, dan tampilkan datanya di ProductIndex.vue)
+    .
+    ├── ...
+    ├── src                          # source folder
+    │   ├── assets         
+    │     ├── ProductImg             # Berisi gambar-gambar produk yang ingin ditampilkan
+    │   ├── .....
+    │   ├── .....
+    │   ├── data-seed.js             # file yang berisi data JSON atau object dari assets
+
+## hasil tampilan produk
+![produk](public/readmeImg/ss1.png)
 
 # Metode Belajar
 
