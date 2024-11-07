@@ -20,14 +20,19 @@ Dengan studi kasus shopping cart diharapkan teman-teman lebih mudah untuk memaha
 - Persiapan Software yang dibutuhkan NodeJS - Visual Studio Code (Extension: Vetur, Volar Labs, Vue Official, ESLint) - MongoDB Community Server (NoSQL) 
 - Instalasi Vue CLI dan Project, untuk instalasinya silahkan kunjungi situs resmi dokumentasi VueJS https://vuejs.org/guide/quick-start.html
 - Membuat Halaman Yang Dibutuhkan Vuestore (membuat file vue dan konfigurasi routesnya di file app.js)
+
+   ### Structure Folder
     .
     ├── ...
-    ├── src                    # source folder
-    │   ├── .....          
-    │   ├── routes             # Folder Routes (untuk mempermudah mengakses tiap halaman terdapat file app.js)
-    │   └── views              # Folder Halaman yang ditampilkan
-          ├── cart             # Untuk Halaman Cart (di dalamnya terdapat index.vue)
-          ├── product          # Halaman Produk Detail dan Index produk (ProductDetail.vue & ProductIndex.vue)
+    ├── src                     # source folder
+    │   ├── ...         
+    │   ├── routes              # Folder Routes (untuk mempermudah mengakses tiap halaman terdapat file app.js)
+    │   └── views               # Folder Halaman yang ditampilkan
+    |      ├── cart             # Untuk Halaman Cart (di dalamnya terdapat index.vue)
+    |      ├── product          # Halaman Produk Detail dan Index produk (ProductDetail.vue & ProductIndex.vue)
+    └── ...
+  
+  > structure folder yang bisa di ikuti
 
 ## konfigurasi routes tiap halaman
 ```javascript
@@ -51,14 +56,18 @@ export default router;
 ```
 
 - Menampilkan Data Product dari JSON (dapatkan semua file assets nya, buat data-seed.js dalam bentuk object, dan tampilkan datanya di ProductIndex.vue)
+    
     .
     ├── ...
     ├── src                          # source folder
     │   ├── assets         
     │     ├── ProductImg             # Berisi gambar-gambar produk yang ingin ditampilkan
-    │   ├── .....
-    │   ├── .....
+    │   ├── ...
+    │   ├── ...
     │   ├── data-seed.js             # file yang berisi data JSON atau object dari assets
+    └── ...
+    
+    > structure folder yang bisa di ikuti
 
 ## hasil tampilan produk
 ![produk](public/readmeImg/ss1.png)
