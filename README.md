@@ -22,6 +22,7 @@ Dengan studi kasus shopping cart diharapkan teman-teman lebih mudah untuk memaha
 - Membuat Halaman Yang Dibutuhkan Vuestore (membuat file vue dan konfigurasi routesnya di file app.js)
 
    ### Structure Folder
+   ```
     .
     ├── ...
     ├── src                     # source folder
@@ -31,7 +32,7 @@ Dengan studi kasus shopping cart diharapkan teman-teman lebih mudah untuk memaha
     |      ├── cart             # Untuk Halaman Cart (di dalamnya terdapat index.vue)
     |      ├── product          # Halaman Produk Detail dan Index produk (ProductDetail.vue & ProductIndex.vue)
     └── ...
-  
+  ```
   > structure folder yang bisa di ikuti
 
 ## konfigurasi routes tiap halaman
