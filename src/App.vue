@@ -20,7 +20,7 @@
         <div class="navbar-start">
           <!-- navbar items -->
           <RouterLink to="/product" class="navbar-item">Product</RouterLink>
-          <RouterLink :to="{ name: 'Detail', params: { id: 123 } }" class="navbar-item">Product Detail</RouterLink>
+          <!-- <RouterLink :to="{ name: 'Detail', params: { id: 123 } }" class="navbar-item">Product Detail</RouterLink> -->
           <RouterLink to="/cart" class="navbar-item">Cart</RouterLink>
         </div>
 

@@ -3,8 +3,9 @@
     <h1>Index Product</h1>
 
     <div class="container">
+      <!-- is-col-min-14 -->
 
-      <div class="grid is-col-min-14">
+      <div class="grid is-col-min-14 is-row-gap-0 is-column-gap-3">
         <div class="card" v-for="(brg, index) in barangs" :key="index">
           <div class="card-image">
             <figure class="image">
@@ -35,6 +36,7 @@
           </footer>
         </div>
       </div>
+
 
     </div>
 

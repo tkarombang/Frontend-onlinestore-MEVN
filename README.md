@@ -75,6 +75,24 @@ export default router;
 ## hasil tampilan produk
 ![produk](public/readmeImg/ss1.png)
 
+- Menampilkan Data Produk Berdasarkan ID Produk (membuat halaman ProductDetail.vue, deklarasikan ref() computed() dan useRoute())
+```javascript
+// API Preference (VUEJS Dokumentation) ini adalah Composition API bukan Option API 
+import { products } from '@/data-seed';
+import { computed, ref } from 'vue';
+import { useRoute } from 'vue-router';
+const route = useRoute()
+
+const barangs = ref(products)
+const isProductFound = computed(() => {
+  return barangs.value.some(brg => brg.id === route.params.id)
+});
+// 1. ref() merupakan fungsi dari vue3 composition api untuk membuat data REAKTIVE yang menyimpan nilai primitif atau object
+// 2. computed() merupakan menghitung nilai berdasarkan state reakitf
+// 3. useRoute() sebuah memungkinakn kita untuk mengakses data-data yang terkait dengan URL yang sedang dikunjungi oleh penggune.
+```
+
+
 # Metode Belajar
 
 - Pmebelajaran Mandiri Online: Kamu dapat menentukan sendiri waktu belajarmu
