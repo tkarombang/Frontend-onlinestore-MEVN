@@ -5,7 +5,7 @@
     <div class="container">
       <!-- is-col-min-14 -->
 
-      <div class="grid is-col-min-14 is-row-gap-0 is-column-gap-3">
+      <div class="grid is-col-min-13 is-row-gap-0 is-column-gap-3">
         <div class="card" v-for="(brg, index) in barangs" :key="index">
           <div class="card-image">
             <figure class="image">
@@ -14,27 +14,28 @@
           </div>
           <div class="card-content">
             <div class="content">
-              <h1 class="title is-size-5">{{ brg.name }}</h1>
-              <p class="subtitle is-size-6 mt-3">Rp{{ brg.price }} | {{ brg.size }}</p>
+              <h2 class="title is-size-6">{{ brg.name.substring(0, 20) + '...' }}</h2>
+              <p class="subtitle is-size-6 mt-2">Rp{{ brg.price }} | {{ brg.size }}</p>
             </div>
           </div>
+
           <footer class="card-footer">
 
-            <div class="card-footer-item">
-              <RouterLink :to="{ name: 'Detail', params: { id: brg.id } }" class="navbar-item"><button
-                  class="button is-primary">
+            <div class="card-footer-item ">
+              <RouterLink :to="{ name: 'Detail', params: { id: brg.id } }">
+                <button class="button is-primary">
                   <span class="icon-text">
-                    <span class="icon">
-                      <i class="fas fa-info-circle"></i>
-                    </span>
-                    <span></span>
+                    <i class="fas fa-info-circle mr-2"></i>
                   </span>
-                  Details</button></RouterLink>
+                  Details
+                </button>
+              </RouterLink>
             </div>
-
 
           </footer>
         </div>
+
+
       </div>
 
 

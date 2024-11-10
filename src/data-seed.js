@@ -49,7 +49,7 @@ export const products = [
     size: 'S/M/L/XL',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     imageUrl: produkImg4,
-    averageRating: '4.5',
+    averageRating: '4.0',
   },
   {
     id: '567',
@@ -130,7 +130,7 @@ export const products = [
     size: 'All Size',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     imageUrl: produkImg13,
-    averageRating: '3.5',
+    averageRating: '3.0',
   },
   {
     id: '106',
@@ -139,6 +139,15 @@ export const products = [
     size: '30/40/41/42/43',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     imageUrl: produkImg14,
+    averageRating: '4.5',
+  },
+  {
+    id: '107',
+    name: 'SDLS KREMOR G24 BROWN',
+    price: '175.000',
+    size: '30/40/41/42/43',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    imageUrl: produkImg15,
     averageRating: '4.5',
   },
   {

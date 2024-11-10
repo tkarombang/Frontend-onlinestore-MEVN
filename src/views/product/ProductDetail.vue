@@ -1,6 +1,6 @@
 <template>
   <div>
-    Products {{ $route.params.id }}
+
 
     <div v-if="isProductFound">
       <div v-for="(brg, index) in barangs " :key="index">
@@ -25,13 +25,20 @@
                         <h1 class="title is-size-5">{{ brg.name }}</h1>
                         <p class="subtitle is-size-6 mt-3">Rp{{ brg.price }} | {{ brg.size }}</p>
                         <p class="subtitle is-size-6 mt-3">{{ brg.description }}</p>
-                        <p class="subtitle is-size-6 mt-3">Rating:
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-solid fa-star"></i>
-                          <i class="fa-regular fa-star"></i>
-                          {{ console.log(parseFloat(brg.averageRating)) }}
-                        </p>
+
+                        <div class="is-flex">
+                          <div v-for="index in 5" :key="index - 1">
+                            <div v-if="parseFloat(brg.averageRating) > index - 1">
+                              <i class="fa-solid fa-star column is-0"></i>
+                            </div>
+                            <div v-else-if="parseFloat(brg.averageRating) <= index - 1">
+                              <i class="fa-regular fa-star column is-0"></i>
+                            </div>
+                          </div>
+                          <h5 class="column">{{ brg.averageRating }}</h5>
+                        </div>
+
+
                       </div>
                     </div>
 

@@ -1,19 +1,18 @@
 <template>
   <div id="app">
 
-    <nav class="navbar is-fixed-top is-primary has-shadow title is-size-4" role="navigation"
-      aria-label="main navigation">
+    <nav class="navbar is-primary has-shadow title is-size-4" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <div class="navbar-brand">
-          <h1 class="navbar-item ">ONLINESHOP</h1>
 
-          <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
+        <h1 class="navbar-item ">ONLINESHOP</h1>
+
+        <a role="button" class="navbar-burger has-background-primary-10 has-text-primary-10-invert"
+          data-target="navMenu" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
       <div class="navbar-menu" id="navMenu">
         <!-- navbar start, navbar end -->
