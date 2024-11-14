@@ -103,7 +103,7 @@ export const cartItems = [
 ]
 ```
 ## Styling halaman cart 
-![produk](public/readmeImg/ss1.png)
+![produk](public/readmeImg/ss2.png)
 
 ```vue
 <!-- Format Currency style IDR  -->
