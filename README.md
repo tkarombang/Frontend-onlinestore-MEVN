@@ -8,7 +8,7 @@ JavaScript merupakan teknologi yang berkembang dengan cepat. Sampai dengan sekar
 
 Dengan studi kasus shopping cart diharapkan teman-teman lebih mudah untuk memahami dan sebagai contoh untuk project selanjutnya. Selamat belajar
 
-# Tujuan Umum dan Khusu Pelatihan
+# Tujuan Umum dan Khusus Pelatihan
 
 -
 -
@@ -91,6 +91,39 @@ const isProductFound = computed(() => {
 // 2. computed() merupakan menghitung nilai berdasarkan state reakitf
 // 3. useRoute() sebuah memungkinakn kita untuk mengakses data-data yang terkait dengan URL yang sedang dikunjungi oleh penggune.
 ```
+
+- Membuat halaman Cart dan mengisi sample data dari data-seed.js, melakukan styling dan mengatur total keseluruhan harga produk
+
+```js
+// Data Sampel yang ada di data-seed.js
+export const cartItems = [
+  products[0],
+  products[2],
+  products[3]
+]
+```
+## Styling halaman cart 
+![produk](public/readmeImg/ss1.png)
+
+```vue
+<!-- Format Currency style IDR  -->
+      <div>
+        <h1 class="title is-5">Total: {{ new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: 'IDR'
+        }).format(totalPrice) }}</h1>
+      </div>
+```
+
+```js
+// REDUCE KESELURUHAN TOTAL HARGA
+const totalPrice = computed(() => {
+  return cartItems.reduce((total, item) =>
+    total + parseInt(item.price.split('.').join('')), 0
+  )
+})
+```
+
 
 
 # Metode Belajar
