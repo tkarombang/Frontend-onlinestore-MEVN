@@ -76,7 +76,7 @@
       </div>
     </div>
     <div v-else>
-      <h1>HALAMAN TIDAK ADA</h1>
+      <NotFound />
     </div>
 
   </div>
@@ -86,6 +86,8 @@
 import { products } from '@/data-seed';
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import NotFound from '../errPage/NotFound.vue';
+
 const route = useRoute()
 
 const barangs = ref(products)

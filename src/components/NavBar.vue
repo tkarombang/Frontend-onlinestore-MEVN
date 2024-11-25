@@ -19,7 +19,7 @@
         <!-- navbar items -->
         <RouterLink to="/product" class="navbar-item">Product</RouterLink>
         <!-- <RouterLink :to="{ name: 'Detail', params: { id: 123 } }" class="navbar-item">Product Detail</RouterLink> -->
-        <RouterLink to="/cart" class="navbar-item">Cart</RouterLink>
+
       </div>
 
       <div class="navbar-end">
@@ -27,12 +27,12 @@
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
-              <a class="button">
+              <RouterLink to="/cart" class="navbar-item button">
                 <span class="icon">
-                  <i class="fas fa-twitter" aria-hidden="true"></i>
+                  <i class="fa-solid fa-cart-shopping"></i>
                 </span>
-                <span>Tweet</span>
-              </a>
+                Cart
+              </RouterLink>
             </p>
             <p class="control">
               <a class="button is-primary">
