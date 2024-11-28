@@ -150,15 +150,6 @@ export const products = [
     imageUrl: produkImg15,
     averageRating: '4.5',
   },
-  {
-    id: '107',
-    name: 'SDLS KREMOR G24 BROWN',
-    price: '175.000',
-    size: '30/40/41/42/43',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    imageUrl: produkImg15,
-    averageRating: '4.5',
-  },
 ]
 
 export const cartItems = [

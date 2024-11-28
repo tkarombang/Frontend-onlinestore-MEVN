@@ -1,41 +1,10 @@
 <template>
   <div>
-    <h1>Index Product</h1>
-
     <div class="container">
       <!-- is-col-min-14 -->
 
       <div class="grid is-col-min-10 is-row-gap-0 is-column-gap-3 ">
-        <div class="card" v-for="(brg, index) in barangs" :key="index">
-          <div class="card-image">
-            <figure class="image">
-              <img :src="brg.imageUrl" :alt="brg.name" />
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              <h2 class="title is-size-6">{{ brg.name.substring(0, 20) + '...' }}</h2>
-              <p class="subtitle is-size-6 mt-2">Rp{{ brg.price }} | {{ brg.size }}</p>
-            </div>
-          </div>
-
-          <footer class="card-footer">
-
-            <div class="card-footer-item ">
-              <RouterLink :to="{ name: 'Detail', params: { id: brg.id } }">
-                <button class="button is-primary">
-                  <span class="icon-text">
-                    <i class="fas fa-info-circle mr-2"></i>
-                  </span>
-                  Details
-                </button>
-              </RouterLink>
-            </div>
-
-          </footer>
-        </div>
-
-
+        <ProductItem v-for="brg in barangs" :key="brg.id" :products="brg" />
       </div>
 
 
@@ -48,6 +17,7 @@
 <script setup>
 import { ref } from 'vue';
 import { products } from '../../data-seed'
+import ProductItem from '@/components/ProductItem.vue';
 
 const barangs = ref(products);
 </script>
