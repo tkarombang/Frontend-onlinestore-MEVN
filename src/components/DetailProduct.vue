@@ -2,7 +2,7 @@
   <!-- <div v-for="(brg, index) in barangs " :key="index"> -->
   <div v-if="barang.id === $route.params.id">
     <!--  is-max-tablet -->
-    <div class="container">
+    <div class="container is-max-tablet">
 
       <div class="card columns">
         <div class="column">

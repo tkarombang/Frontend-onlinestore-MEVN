@@ -124,6 +124,41 @@ const totalPrice = computed(() => {
 })
 ```
 
+- Membuat Reusable Component dan Props (Dengan memecah masing-masing elemen yang ada pada halaman, kita akan membuat sesuatu yang namanya komponen agar tulisan atau kodingan semakin rapi dan terstruktur, tapi keunggulan utamanya itu adalah kita tidak perlu menuliskan ulang halaman yang kita perlukan, cukup dengan menginpor komponennya saja sehingga membuat kodingan semakin efisien).
+
+dibawah ini adalah contoh sederhana dari komponen:.
+
+```vue
+<template>
+<div class="grid is-col-min-10 is-row-gap-0 is-column-gap-3 ">
+        <ProductItem v-for="brg in barangs" :key="brg.id" :products="brg" />
+      </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { products } from '../../data-seed'
+import ProductItem from '@/components/ProductItem.vue';
+
+const barangs = ref(products);
+</script>
+```
+
+kemudian untuk file komponennya yaitu ProductItem.vue seperti di bawah.
+```vue
+<script setup>
+import { defineProps } from 'vue';
+defineProps({
+  products: {
+    type: Object,
+    required: true
+  }
+})
+</script>
+```
+
+## Struktur halaman Komponen file
+![component](public/readmeImg/ss3.png)
 
 
 # Metode Belajar
