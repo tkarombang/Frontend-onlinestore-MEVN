@@ -1,8 +1,8 @@
 <template>
-  <div class="card">
+  <div class="card is-mobile">
     <div class="card-image">
       <figure class="image">
-        <img :src="products.imageUrl" :alt="products.name" />
+        <img :src="`http://localhost:8000${products.imageUrl}`" :alt="products.name" />
       </figure>
     </div>
     <div class="card-content">
