@@ -6,7 +6,7 @@ import NotFound from "@/views/errPage/NotFound.vue";
 
 const routes = [
   { path: "/products", name: "Product", component: product },
-  { path: "/products/:id", name: "Detail", component: productDetail },
+  { path: "/products/:code", name: "Detail", component: productDetail },
   { path: "/cart", name: "Cart", component: cart },
   { path: "/:pathMatch(.*)*", name: 'NotFound', component: NotFound },
 ];

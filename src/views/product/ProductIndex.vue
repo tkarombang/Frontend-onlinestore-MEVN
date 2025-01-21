@@ -3,7 +3,7 @@
     <div class="container">
       <!-- is-col-min-14 -->
 
-      <div class="grid is-col-min-10 is-row-gap-0 is-column-gap-3 is-multiline is-mobile">
+      <div class="grid is-col-min-10 is-row-gap-3 is-column-gap-3 is-multiline is-mobile">
         <!-- TAMPILKAN PRODUK JIKA DATA BERHASIL DIAMBIL -->
         <ProductItem v-for="brg in barangs" :key="brg.id" :products="brg" />
       </div>

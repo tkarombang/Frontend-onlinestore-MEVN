@@ -1,31 +1,39 @@
 <template>
   <div>
 
-
-    <div v-if="isProductFound">
-      <DetailProduct v-for="brg in barangs" :key="brg.id" :barang="brg" />
+    <div v-if="barangs">
+      <DetailProduct v-if="barangs" :barangs="barangs" />
     </div>
-    <div v-else>
-      <NotFound />
+    <div v-else-if="error" class="notification is-danger mt-5">
+      {{ error }}
     </div>
 
   </div>
 </template>
 
 <script setup>
-import { products } from '@/data-seed';
-import { computed, ref } from 'vue';
+// import { products } from '@/data-seed';
+import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import NotFound from '../errPage/NotFound.vue';
 import DetailProduct from '@/components/DetailProduct.vue';
+import axios from 'axios';
 
-const route = useRoute()
+const route = useRoute() //MENGAMBIL PARAMETER RUTE AKTIF
+const barangs = ref(null) //DATA PRODUK YANG AKAN DITAMPILKAN
+const error = ref(null) //ERROR HANDLING UNTUK PRODUK TIDAK DITEMUKAN
 
-const barangs = ref(products)
-const isProductFound = computed(() => {
-  return barangs.value.some(brg => brg.id === route.params.id)
-});
-
+const fetchProductDetail = async () => {
+  try {
+    const { code } = route.params //AMBIL PARAMETER 'code' DARI RUTE
+    const response = await axios.get(`http://localhost:8000/api/products/${code}`)  //PANGGIL API DETAIL PRODUK
+    barangs.value = response.data; //SIMPAN DATA PRODUK
+  } catch (err) {
+    console.error(err)
+    error.value = 'GAGAL MEMUAT DATA PRODUK. SILAHKAN COBA LAGI NANTI'
+  }
+}
+//PANGGIL DATA PRODUCT SAAT KOMPONEN DI MOUNT
+onMounted(fetchProductDetail)
 
 </script>
 
