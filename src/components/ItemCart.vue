@@ -6,7 +6,7 @@
       <div class="column is-one-fifth ml-1">
         <div class="card-image ">
           <figure class="image is-128x128">
-            <img :src="product.imageUrl" :alt="product.name">
+            <img :src="`http://localhost:8000${product.imageUrl}`" :alt="product.name">
           </figure>
         </div>
       </div>

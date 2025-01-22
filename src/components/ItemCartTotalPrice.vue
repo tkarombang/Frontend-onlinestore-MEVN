@@ -11,7 +11,8 @@
 import { defineProps } from 'vue';
 defineProps({
   totalPrices: {
-    type: Object
+    type: Number, // dari Object -> ubah ke Number
+    required: true
   }
 })
 

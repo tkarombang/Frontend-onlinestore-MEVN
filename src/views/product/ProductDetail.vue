@@ -12,7 +12,6 @@
 </template>
 
 <script setup>
-// import { products } from '@/data-seed';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import DetailProduct from '@/components/DetailProduct.vue';

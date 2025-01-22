@@ -27,7 +27,7 @@
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
-              <RouterLink to="/cart" class="navbar-item button">
+              <RouterLink to="/orders" class="navbar-item button">
                 <span class="icon">
                   <i class="fa-solid fa-cart-shopping"></i>
                 </span>

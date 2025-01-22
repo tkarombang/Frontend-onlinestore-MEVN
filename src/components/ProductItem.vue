@@ -7,7 +7,7 @@
     </div>
     <div class="card-content">
       <div class="content">
-        <h2 class="title is-size-6">{{ products.name.substring(0, 20) + '...' }}</h2>
+        <h2 class="title is-size-6">{{ products.name }}</h2>
         <p class="subtitle is-size-6 mt-2">Rp{{ products.price }} | Code: {{ products.code }}</p>
         <p class="subtitle is-size-6">{{ products.description.substring(0, 50) + '...' }}</p>
       </div>

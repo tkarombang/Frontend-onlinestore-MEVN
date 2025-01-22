@@ -1,33 +1,61 @@
 <template>
-  <div>
 
-    <!--  is-max-tablet -->
-    <div class="container is-max-tablet">
+  <!--  is-max-tablet -->
+  <div class="container is-max-tablet">
 
+    <div v-if="error" class="notification is-danger">
+      {{ error }}
+    </div>
+    <div v-else-if="dataCart && dataCart.length > 0">
       <ItemCart v-for="item in dataCart" :key="item.id" :product="item" />
 
       <ItemCartTotalPrice :totalPrices="totalPrice" />
     </div>
+
   </div>
 
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
-import { cartItems } from '@/data-seed';
+import { computed, onMounted, ref } from 'vue';
+// import { cartItems } from '@/data-seed';
+import axios from 'axios';
 import ItemCart from '@/components/ItemCart.vue';
 import ItemCartTotalPrice from '@/components/ItemCartTotalPrice.vue';
 
-const dataCart = ref(cartItems)
-console.log(dataCart, dataCart.value)
+const dataCart = ref(null) // Data keranjang belanja akan disimpan di sini
+const error = ref(null)
+const fetchDataCart = async () => {
+  try {
+    const response = await axios.get('http://localhost:8000/api/orders/user/1');
+    if (response.data.length > 0) {
+      // HANYA MENGAMBIL PRODUK DARI PESANAN
+      // dataCart.value = response.data[0].products // Simpan data dari server
+
+      // MENGGABUNGKAN PRODUK DARI SEMUA PESANAN
+      let allProducts = response.data.flatMap(order => order.products)
+      dataCart.value = allProducts
+      console.log(allProducts)
+      // console.log(dataCart.value)
+    } else {
+      console.log('TIDAK ADA PESANAN')
+    }
+  } catch (err) {
+    console.error(err)
+    error.value = 'GAGAL MEMUAT CERANJANG BELANJA...';
+  }
+}
 
 const totalPrice = computed(() => {
-  return cartItems.reduce((total, item) =>
-    total + parseInt(item.price.split('.').join('')), 0
-  )
+  if (!dataCart.value) return 0;
+  return dataCart.value.reduce((total, item) => {
+    const price = parseFloat(item.price)
+    return total + (isNaN(price) ? 0 : price)
+  }, 0)
 })
-console.log(new Intl.NumberFormat('id-ID', {}).format(totalPrice.value),)
 
+//AMBIL DATA SAAT KOMPONEN DI MOUNT
+onMounted(fetchDataCart)
 </script>
 
 <style></style>
