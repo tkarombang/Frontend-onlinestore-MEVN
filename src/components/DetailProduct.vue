@@ -4,6 +4,12 @@
     <!--  is-max-tablet -->
     <div class="container is-max-tablet">
 
+      <!-- Notification -->
+      <div v-if="notification.message" :class="['notification', notification.type]">
+        <button class="delete" @click="closeNotification"></button>
+        {{ notification.message }}
+      </div>
+
       <div class="card columns">
         <div class="column">
           <div class="columns is-max-tablet">
@@ -43,7 +49,7 @@
           <footer class="card-footer">
             <div class="card-footer-item">
               <div class="btn-buy">
-                <button class="button is-primary">
+                <button class="button is-primary" @click="fetchAddToCart(barangs.code)">
                   <span class="icon-text">
                     <span class="icon">
                       <i class="fa-sharp fa-solid fa-cart-shopping"></i>
@@ -51,6 +57,7 @@
                     <span></span>
                   </span>
                   Buy</button>
+
               </div>
               <div class="btn-message">
                 <button class="button is-primary">
@@ -69,19 +76,58 @@
 
     </div>
   </div>
+
   <!-- </div> -->
 </template>
 
 <script setup>
-// import axios from 'axios';
+import { ref } from 'vue';
+import axios from 'axios';
 import { defineProps } from 'vue';
 
+// Props untuk data produk
 defineProps({
   barangs: {
     type: Object,
-    required: true
+    required: true,
+  },
+});
+
+// State untuk notifikasi
+const notification = ref({
+  message: '',
+  type: '', // 'is-success', 'is-danger', dll
+});
+
+// Fungsi untuk menutup notifikasi
+const closeNotification = () => {
+  notification.value = {
+    message: '',
+    type: '',
+  };
+};
+
+// Fungsi untuk menambahkan produk ke cart
+const fetchAddToCart = async (productCode) => {
+  try {
+    const response = await axios.post(`http://localhost:8000/api/orders/user/1/add`, {
+      productCode, // Data yang dikirim ke API
+    });
+    // Tampilkan notifikasi sukses
+    notification.value = {
+      message: 'Produk berhasil ditambahkan ke keranjang!',
+      type: 'is-success',
+    };
+    console.log(response.data); // Debug respon
+  } catch (error) {
+    console.error('Error menambahkan ke cart:', error);
+    // Tampilkan notifikasi error
+    notification.value = {
+      message: 'Gagal menambahkan produk ke keranjang.',
+      type: 'is-danger',
+    };
   }
-})
+};
 </script>
 
 <style scoped>
