@@ -37,7 +37,7 @@
           <button class="button is-danger is-small" style="width: 34px;">-</button>
         </div>
         <div>
-          <button class="button">Remove</button>
+          <button class="button is-danger" :alt="product.name" @click="fetchRemoveFromCart">Remove</button>
         </div>
 
       </div>
@@ -51,13 +51,37 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import axios from 'axios';
 
-defineProps({
+// Define props
+const props = defineProps({
   product: {
     type: Object,
-    required: true
+    required: true, // Menjamin bahwa props wajib diberikan
+  },
+  onRemove: {
+    type: Function,
+    required: true, // Menjamin bahwa fungsi harus diterima
+  },
+});
+
+const fetchRemoveFromCart = async () => {
+  console.log('Product data in fetchRemoveFromCart:', props.product); // Debugging
+  try {
+    const response = await axios.delete(`http://localhost:8000/api/orders/user/1/product/${props.product.code}`);
+    console.log('Product code:', props.product.code);
+    props.onRemove(props.product.code);
+    if (response.status === 200) {
+      console.log('Product berhasil dihapus:', response);
+    } else {
+      console.error('Gagal menghapus produk:', response);
+    }
+  } catch (err) {
+    console.error('Error menghapus data:', err);
   }
-})
+
+};
+
 
 </script>
 <style scoped>

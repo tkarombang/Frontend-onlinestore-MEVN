@@ -81,9 +81,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { defineProps, ref } from 'vue';
 import axios from 'axios';
-import { defineProps } from 'vue';
 
 // Props untuk data produk
 defineProps({
@@ -109,9 +108,10 @@ const closeNotification = () => {
 
 // Fungsi untuk menambahkan produk ke cart
 const fetchAddToCart = async (productCode) => {
+  console.log(productCode)
   try {
-    const response = await axios.post(`http://localhost:8000/api/orders/user/1/add`, {
-      productCode, // Data yang dikirim ke API
+    const response = await axios.post(`http://localhost:8000/api/orders/user/1/add/`, {
+      product: productCode
     });
     // Tampilkan notifikasi sukses
     notification.value = {

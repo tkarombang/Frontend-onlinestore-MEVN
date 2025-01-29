@@ -7,7 +7,7 @@
       {{ error }}
     </div>
     <div v-else-if="dataCart && dataCart.length > 0">
-      <ItemCart v-for="item in dataCart" :key="item.id" :product="item" />
+      <ItemCart v-for="item in dataCart" :key="item._id" :product="item" :onRemove="handleRemove" />
 
       <ItemCartTotalPrice :totalPrices="totalPrice" />
     </div>
@@ -18,7 +18,6 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue';
-// import { cartItems } from '@/data-seed';
 import axios from 'axios';
 import ItemCart from '@/components/ItemCart.vue';
 import ItemCartTotalPrice from '@/components/ItemCartTotalPrice.vue';
@@ -44,6 +43,12 @@ const fetchDataCart = async () => {
     console.error(err)
     error.value = 'GAGAL MEMUAT CERANJANG BELANJA...';
   }
+}
+
+const handleRemove = (productCode) => {
+  console.log('Removing product with code:', productCode); // Debug
+  dataCart.value = dataCart.value.filter((item) => item.code !== productCode)
+  console.log('Updated cart:', dataCart.value); // Debug
 }
 
 const totalPrice = computed(() => {
