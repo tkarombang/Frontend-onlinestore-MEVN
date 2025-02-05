@@ -4,7 +4,7 @@
   <div class="container is-max-tablet">
 
     <!-- NOTFICITAION -->
-    <div v-if="showNotification" class="notification is-success">
+    <div v-if="showNotification" class="notification is-primary has-text-light has-text-weight-semibold">
       {{ notifMessage }}
     </div>
 
@@ -12,10 +12,15 @@
       {{ error }}
     </div>
     <div v-else-if="dataCart && dataCart.length > 0">
-      <ItemCart v-for="item in dataCart" :key="item._id" :product="item" @remove-product="handleRemove"
-        @update-quantity="handleUpdateQuantity" />
+      <TransitionGroup name="fade" tag="div">
+        <ItemCart v-for="item in dataCart" :key="item._id" :product="item" @remove-product="handleRemove"
+          @update-quantity="handleUpdateQuantity" />
+      </TransitionGroup>
 
-      <ItemCartTotalPrice :totalPrices="totalPrice" />
+      <ItemCartTotalPrice class="mt-5" :totalPrices="totalPrice" />
+    </div>
+    <div v-else class="cart-empty">
+      <img src="/src/assets/ProdukImg/empty-cart.png" alt="Empty Cart">
     </div>
 
   </div>
@@ -117,4 +122,20 @@ const totalPrice = computed(() => {
 onMounted(fetchDataCart)
 </script>
 
-<style></style>
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-form,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.cart-empty {
+  text-align: center;
+  margin: auto
+}
+</style>

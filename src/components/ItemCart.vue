@@ -41,13 +41,23 @@
 
       <div class="column is-narrow plex">
         <div class="content-flex">
-          <button class="button is-info is-small" style="width: 34px;" @click="increaseQty">+</button>
+          <button class="button is-info is-small" style="width: 34px;" @click="increaseQty" :disabled="isLoading">
+            <span v-if="!isLoading">
+              <i class="fa-solid fa-circle-plus is-size-5 has-text-danger"></i>
+            </span>
+            <span v-else class="loader"></span>
+          </button>
           <input type="text" class="input is-small has-text-centered" style="width: 34px;" :value="product.quantity"
             readonly>
-          <button class="button is-danger is-small" style="width: 34px;" @click="decreaseQty">-</button>
+          <button class="button is-danger is-small" style="width: 34px;" @click="decreaseQty" :disabled="isLoading">
+            <span v-if="!isLoading"><i class="fa-solid fa-circle-minus is-size-5 has-text-light"></i></span>
+            <span v-else class="loader"></span>
+          </button>
         </div>
         <div>
-          <button class="button is-danger" :alt="product.name" @click="fetchRemoveFromCart">Remove</button>
+          <button class="button is-danger has-text-light" :alt="product.name" @click="fetchRemoveFromCart">
+            <i class="fa-solid fa-trash mr-1 has-text-light"></i>Remove
+          </button>
         </div>
 
       </div>
@@ -57,7 +67,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits, ref } from 'vue';
 import axios from 'axios';
 
 // Define props
@@ -69,18 +79,23 @@ const props = defineProps({
 
 });
 
-
+// Define klo sudah di update
+const isLoading = ref(false)
 //Define emits
 const emits = defineEmits(['remove-product', 'update-quantity'])
 //Define Quantity
 const increaseQty = () => {
+  isLoading.value = true
   console.log(`Increase: ${props.product.name} -> ${props.product.quantity + 1}`);
   emits('update-quantity', props.product.code, props.product.quantity + 1)
+  setTimeout(() => { isLoading.value = false }, 500) // SIMULASI LOADING
 }
 const decreaseQty = () => {
   if (props.product.quantity > 1) {
+    isLoading.value = true
     console.log(`Decrease: ${props.product.name} -> ${props.product.quantity - 1}`);
     emits('update-quantity', props.product.code, props.product.quantity - 1)
+    setTimeout(() => { isLoading.value = false }, 500) // SIMULASI LOADING
   }
 }
 
@@ -100,7 +115,6 @@ const fetchRemoveFromCart = async () => {
   }
 };
 
-
 </script>
 <style scoped>
 .content-flex {
@@ -116,8 +130,28 @@ const fetchRemoveFromCart = async () => {
   justify-content: space-between;
 }
 
+.loader {
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  width: .7rem;
+  height: .7rem;
+  animation: spin .6s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
 /* MOBILE DISPLAY */
 @media only screen and (max-width: 768px) {
+
   .content-flex {
     flex-direction: row;
   }

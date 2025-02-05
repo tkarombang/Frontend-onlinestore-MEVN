@@ -17,7 +17,7 @@
       <!-- navbar start, navbar end -->
       <div class="navbar-start">
         <!-- navbar items -->
-        <RouterLink to="/products" class="navbar-item">Products</RouterLink>
+        <RouterLink to="/products" class="navbar-item has-text-white">Products</RouterLink>
         <!-- <RouterLink :to="{ name: 'Detail', params: { id: 123 } }" class="navbar-item">Product Detail</RouterLink> -->
 
       </div>
