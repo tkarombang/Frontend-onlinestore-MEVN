@@ -7,7 +7,7 @@
       <!-- Notification -->
       <div v-if="notification.message" :class="['notification', notification.type]">
         <button class="delete" @click="closeNotification"></button>
-        {{ notification.message }}
+        <h1 class="is-size-4 has-text-light has-text-centered has-text-weight-semibold">{{ notification.message }}</h1>
       </div>
 
       <div class="card columns">
@@ -81,7 +81,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
 
 // Props untuk data produk
@@ -123,7 +123,7 @@ const fetchAddToCart = async (productCode) => {
     console.error('Error menambahkan ke cart:', error);
     // Tampilkan notifikasi error
     notification.value = {
-      message: 'Gagal menambahkan produk ke keranjang.',
+      message: 'PRDUK SUDAH ADA DALAM KERANJANG.',
       type: 'is-danger',
     };
   }

@@ -2,7 +2,7 @@
   <div class="card is-mobile product-card">
     <div class="card-image">
       <figure class="image">
-        <img :src="`http://localhost:8000${products.imageUrl}`" :alt="products.name" />
+        <img v-lazy="`http://localhost:8000${products.imageUrl}`" :alt="products.name" class="lazy-mage" />
       </figure>
     </div>
     <div class="card-content">
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+
 defineProps({
   products: {
     type: Object,
@@ -45,13 +45,9 @@ defineProps({
 .product-card {
   display: flex;
   flex-direction: column;
-  /* Susunan vertikal */
   justify-content: space-between;
-  /* Ruang antara elemen */
   height: 100%;
-  /* Memastikan semua elemen memiliki tinggi yang sama */
   box-sizing: border-box;
-  /* Menyertakan padding dan border dalam ukuran total */
 }
 
 .product-card .card-content {
@@ -60,5 +56,23 @@ defineProps({
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.lazy-image {
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.lazy-image[data-loaded="true"] {
+  opacity: 1;
 }
 </style>

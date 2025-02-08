@@ -41,17 +41,4 @@ main {
   margin-top: 3rem;
   padding: 1.5rem;
 }
-
-/* *{
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 0;
-  margin: 0;
-}
-#page-wrap{
-  margin: auto;
-  max-width: 800px;
-  min-height: 100vh;
-  background-color: salmon;
-} */
 </style>

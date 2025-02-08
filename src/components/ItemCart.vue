@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
 
 // Define props
@@ -148,6 +148,7 @@ const fetchRemoveFromCart = async () => {
     transform: rotate(360deg)
   }
 }
+
 
 /* MOBILE DISPLAY */
 @media only screen and (max-width: 768px) {
